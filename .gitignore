@@ -37,3 +37,5 @@ stamp-*
 .dirstamp
 *.orig
 *.rej
+
+!.tarball-version

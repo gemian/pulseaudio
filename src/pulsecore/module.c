@@ -152,7 +152,7 @@ int pa_module_load(pa_module** module, pa_core *c, const char *name, const char 
     if ((get_version = (const char *(*)(void)) pa_load_sym(m->dl, name, PA_SYMBOL_GET_VERSION))) {
         const char *version = get_version();
 
-        if (!pa_safe_streq(version, PACKAGE_VERSION)) {
+        if (!pa_startswith(version, PACKAGE_VERSION)) {
             pa_log("Module \"%s\" version (%s) doesn't match the expected version (%s).",
                    name, pa_strnull(version), PACKAGE_VERSION);
             errcode = -PA_ERR_IO;
